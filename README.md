@@ -5,7 +5,7 @@ Siempre trabajar en ramas fuera de Main y crear un Pull Request
 
 ## Requisitos Previos
 
-- PHP [versión requerida, ej: 8.0+]
+- PHP [versión requerida, ej: 8.2+]
 - Composer [versión requerida]
 - MySQL/PostgreSQL/SQLite [según corresponda]
 - Node.js [si usa frontend con herramientas como Vite]
