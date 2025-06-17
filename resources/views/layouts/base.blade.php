@@ -4,7 +4,7 @@
     @include('layouts.head')
     @stack('styles')
   </head>
-  <body class="vertical light">
+  <body class="vertical light @hasSection('sidebar') has-sidebar @else no-sidebar @endif">
     <div class="wrapper">
       
       {{-- Navbar (opcional) --}}
