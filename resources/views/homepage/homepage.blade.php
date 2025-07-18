@@ -9,8 +9,9 @@
   <meta name="keywords" content="SMEDI, IoT, monitoreo, energía, Bacalar">
 
   <!-- Favicons -->
-  <link href="assets copy/img/favicon.png" rel="icon">
-  <link href="assets copy/img/apple-touch-icon.png" rel="apple-touch-icon">
+<link rel="icon" href="{{ asset('img/login/logo_smedi.jpg') }}" type="image/png">
+<link rel="apple-touch-icon" href="{{ asset('img/login/logo_smedi.jpg') }}">
+
 
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -433,16 +434,20 @@
       .mapa-links {
         grid-template-columns: 1fr;
       }
+      
+    
     }
   </style>
 </head>
+
+
+
 
 <body class="index-page">
 
   <header id="header" class="header d-flex align-items-center sticky-top">
     <div class="container-fluid container-xl position-relative d-flex align-items-center justify-content-between">
-
-      <a href="index.html" class="logo d-flex align-items-center">
+      <a href="{{ url('/') }}" class="logo d-flex align-items-center">
         <svg class="tech-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z" stroke="currentColor" stroke-width="2"/>
           <path d="M12 8V16" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
@@ -453,12 +458,12 @@
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html" class="active">Inicio</a></li>
+          <li><a href="#hero">Inicio</a></li>
           <li><a href="#about">Acerca de</a></li>
           <li><a href="#features">Información</a></li>
           <li><a href="#politicas">Políticas</a></li>
           <li><a href="#mapaSitio">Mapa</a></li>
-          <li><a href="{{ route('login') }}">Login</a></li>
+          <li><a href="{{ route('login') }}">Iniciar sesión</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -516,25 +521,25 @@
       <div class="container">
         <ul class="nav nav-tabs row d-flex" data-aos="fade-up" data-aos-delay="100">
           <li class="nav-item col-3">
-            <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
+                <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1" style="cursor: pointer;">
               <i class="bi bi-binoculars"></i>
               <h4 class="d-none d-lg-block">MISIÓN</h4>
             </a>
           </li>
           <li class="nav-item col-3">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2" style="cursor: pointer;">
               <i class="bi bi-eye"></i>
               <h4 class="d-none d-lg-block">VISIÓN</h4>
             </a>
           </li>
           <li class="nav-item col-3">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3" style="cursor: pointer;">
               <i class="bi bi-brightness-high"></i>
               <h4 class="d-none d-lg-block">VALORES</h4>
             </a>
           </li>
           <li class="nav-item col-3">
-            <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4">
+                <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-4" style="cursor: pointer;">
               <i class="bi bi-command"></i>
               <h4 class="d-none d-lg-block">¿Por qué elegirnos?</h4>
             </a>
@@ -667,7 +672,7 @@
               <a href="#about" class="mapa-link">Acerca de</a>
               <a href="#features" class="mapa-link">Información</a>
               <a href="#politicas" class="mapa-link">Políticas</a>
-              <a href="{{ route('login') }}" class="mapa-link">Login</a>
+              <a href="{{ route('login') }}" class="mapa-link">Iniciar Sesión</a>
             </div>
           </div>
         </div>
@@ -725,3 +730,38 @@
 
 </body>
 </html>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const navLinks = document.querySelectorAll('.navmenu a');
+
+    function setActiveLinkOnScroll() {
+      let scrollPosition = window.scrollY + 200; 
+      navLinks.forEach(link => {
+        let section = document.querySelector(link.getAttribute('href'));
+        if (section) {
+          if (
+            scrollPosition >= section.offsetTop &&
+            scrollPosition < section.offsetTop + section.offsetHeight
+          ) {
+            navLinks.forEach(l => l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        }
+      });
+    }
+
+    // Llamar la función al cargar y al hacer scroll
+    window.addEventListener('scroll', setActiveLinkOnScroll);
+    setActiveLinkOnScroll();
+
+    // Enlace activo al hacer clic 
+    navLinks.forEach(link => {
+      link.addEventListener('click', function () {
+        navLinks.forEach(l => l.classList.remove('active'));
+        this.classList.add('active');
+      });
+    });
+  });
+</script>
