@@ -15,39 +15,45 @@
     </div>
     <ul class="navbar-nav flex-fill w-100 mb-2">
         <li class="nav-item">
-            <a class="nav-link pl-3 text-white" href="{{ route('dashboard') }}" style="background-color: rgba(255,255,255,0.15);">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('dashboard') }}">
             <i class="fe fe-home fe-16"></i>
             <span class="ml-1 item-text">Dashboard</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link pl-3 text-white" href="{{ route('municipios.index') }}">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('municipios.index') }}">
             <i class="fe fe-map-pin fe-16"></i>
             <span class="ml-1 item-text">Municipios</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link pl-3 text-white" href="{{ route('localidades.index') }}">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('localidades.index') }}">
             <i class="fe fe-navigation fe-16"></i>
             <span class="ml-1 item-text">Localidades</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link pl-3 text-white" href="{{ route('estado-energia.index') }}">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('estado-energia.index') }}">
             <i class="fe fe-battery fe-16"></i>
             <span class="ml-1 item-text">Estado de Energia</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link pl-3 text-white" href="{{ route('dispositivos.index') }}">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('dispositivos.index') }}">
             <i class="fe fe-hard-drive fe-16"></i>
             <span class="ml-1 item-text">Dispositivos</span>
             </a>
         </li>
         <li class="nav-item">
-            <a class="nav-link pl-3 text-white" href="{{ route('ubicacion_antenas.index') }}">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('ubicacion_antenas.index') }}">
             <i class="fe fe-wifi fe-16"></i>
             <span class="ml-1 item-text">Ubicacion Antenas</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('usuarios.index') }}">
+            <i class="fe fe-user fe-16"></i>
+            <span class="ml-1 item-text">Usuarios</span>
             </a>
         </li>
     </ul>
@@ -55,12 +61,13 @@
 </aside>
 
 <style>
-    /* Estilos personalizados */
     #leftSidebar {
-        --sidebar-blue: #2A5C8A;
-        --hover-blue: #1E4A6D;
-        --active-blue: #3A7BAA;
+      --sidebar-blue: #2A5C8A;
+      --hover-blue: #1E4A6D;
+      --active-blue: #3A7BAA;
     }
-    
-  
+    .sidebarHover:hover {
+      background-color: var(--active-blue);
+      border-radius: 8px;
+    }
 </style>

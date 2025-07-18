@@ -7,6 +7,7 @@ use App\Http\Controllers\EstadoEnergiaController;
 use App\Http\Controllers\DispositivoController;
 use App\Http\Controllers\UbicacionAntenaController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -30,6 +31,8 @@ Route::resource('localidades', LocalidadController::class);
 Route::resource('estado-energia', EstadoEnergiaController::class);
 Route::resource('dispositivos', DispositivoController::class);
 Route::resource('ubicacion_antenas', UbicacionAntenaController::class);
+
+Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
 
 
 require __DIR__.'/auth.php';

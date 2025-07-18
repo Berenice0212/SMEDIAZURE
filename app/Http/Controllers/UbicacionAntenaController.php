@@ -63,4 +63,27 @@ class UbicacionAntenaController extends Controller
     {
         //
     }
+
+    public function apiIndex()
+    {
+        $antenas = UbicacionAntena::with(['localidad', 'municipio', 'estadoEnergia', 'dispositivo'])->get();
+
+        $data = $antenas->map(function ($antena) {
+            return [
+                'id' => $antena->id_antena,
+                'ip' => $antena->ip,
+                'latitud' => $antena->latitud,
+                'longitud' => $antena->longitud,
+                'localidad' => $antena->localidad->localidad ?? null,
+                'municipio' => $antena->municipio->municipio ?? null,
+                'estado_energia' => $antena->estadoEnergia->estado_energia ?? null,
+                'dispositivo' => [
+                    'modelo' => $antena->dispositivo->modelo ?? null,
+                ]
+            ];
+        });
+
+        return response()->json($data);
+    }
+
 }

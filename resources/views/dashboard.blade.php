@@ -2,77 +2,15 @@
 
 @push('styles')
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
   <style>
-      .dashboard-container {
-          padding: 1.5rem;
-          max-width: 100%;
-          margin: 0 auto;
-      }
-      .dashboard-title {
-          font-size: 1.75rem;
-          font-weight: 700;
-          color: #1e293b;
-          display: flex;
-          align-items: center;
-          gap: 0.75rem;
-          margin-bottom: 1rem;
-      }
-      .stats-container {
-          display: grid;
-          grid-template-columns: repeat(4, 1fr);
-          gap: 1.25rem;
-          margin-bottom: 2rem;
-      }
-
-      @media (max-width: 1024px) {
-          .stats-container {
-              grid-template-columns: repeat(2, 1fr);
-          }
-      }
-
-      @media (max-width: 640px) {
-          .stats-container {
-              grid-template-columns: 1fr;
-          }
-      }
-
-      .stat-card {
-          background-color: #fff;
-          border-radius: 12px;
-          padding: 1.25rem;
-          box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-          display: flex;
-          flex-direction: column;
-          gap: 0.5rem;
-          border-left: 6px solid transparent;
-          transition: all 0.3s ease;
-      }
-
       /* Colores específicos para cada tarjeta */
-      .total-antenas { border-left-color: #3b82f6; }     /* Azul */
-      .funcionando   { border-left-color: #10b981; }     /* Verde */
-      .falla         { border-left-color: #ef4444; }     /* Rojo */
-      .panel-solar   { border-left-color: #f59e0b; }     /* Naranja */
-
-      .stat-card h5 {
-          font-weight: 600;
-          color: #334155;
-          font-size: 0.95rem;
-          display: flex;
-          align-items: center;
-          gap: 0.5rem;
-      }
-
-      .stat-card p {
-          font-size: 1.75rem;
-          font-weight: bold;
-          color: #1f2937;
-          margin: 0;
-      }
+      .total-antenas { border-left: 6px solid #3b82f6; }     /* Azul */
+      .funcionando   { border-left: 6px solid #10b981; }     /* Verde */
+      .falla         { border-left: 6px solid #ef4444; }     /* Rojo */
+      .panel-solar   { border-left: 6px solid #f59e0b; }     /* Naranja */
 
       .map-container {
-          height: 600px;
+          height: 450px;
           width: 100%;
           border-radius: 12px;
           overflow: hidden;
@@ -93,20 +31,9 @@
       <div class="container-fluid">
         <div class="row justify-content-center">
           <div class="col-12">
-            <div class="row align-items-center mb-2">
+            <div class="row align-items-center mb-4">
               <div class="col">
-                <h2 class="h5 page-title">Bienvenido!</h2>
-              </div>
-              <div class="col-auto">
-                <form class="form-inline">
-                  <div class="form-group d-none d-lg-inline">
-                    <label for="reportrange" class="sr-only">Date Ranges</label>
-                    <div id="reportrange" class="px-2 py-2 text-muted">
-                      <span class="small"></span>
-                    </div>
-                  </div>
-                 
-                </form>
+                <span class="h2 page-title">Ubicación de antenas</span>
               </div>
             </div>
           </div>
@@ -114,41 +41,88 @@
       </div>
 
       <div class="container-fluid">
-          <div class="dashboard-container">
-              <div class="dashboard-title">
-                  <i class="fas fa-tachometer-alt"></i>
-                  <span class="h2 page-title">Dashboard de Antenas</span>
-              </div>
+        <!-- Inicio de la cards de información -->
+        <div class="row">
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="total-antenas card shadow">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                    <div class="col-3 text-center">
+                        <span class="circle circle-sm bg-primary">
+                        <i class="fe fe-16 fe-bar-chart text-white mb-0"></i>
+                        </span>
+                    </div>
+                    <div class="col pr-0">
+                        <p class="mb-0">Total de Antenas</p>
+                        <span class="h3 mb-0">{{ $totalAntenas }}</span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="funcionando card shadow">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                    <div class="col-3 text-center">
+                        <span class="circle circle-sm bg-primary">
+                        <i class="fe fe-16 fe-check text-white mb-0"></i>
+                        </span>
+                    </div>
+                    <div class="col pr-0">
+                        <p class="mb-0">Funcionando</p>
+                        <span class="h3 mb-0">{{ $funcionando }}</span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="falla card shadow">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                    <div class="col-3 text-center">
+                        <span class="circle circle-sm bg-primary">
+                        <i class="fe fe-16 fe-alert-triangle text-white mb-0"></i>
+                        </span>
+                    </div>
+                    <div class="col pr-0">
+                        <p class="mb-0">Fuera de servicio</p>
+                        <span class="h3 mb-0">{{ $falla }}</span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-xl-3 mb-4">
+                <div class="panel-solar card shadow">
+                <div class="card-body">
+                    <div class="row align-items-center">
+                    <div class="col-3 text-center">
+                        <span class="circle circle-sm bg-primary">
+                        <i class="fe fe-16 fe-sunrise text-white mb-0"></i>
+                        </span>
+                    </div>
+                    <div class="col pr-0">
+                        <p class="mb-0">Panel Solar</p>
+                        <span class="h3 mb-0">{{ $panelSolar }}</span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+        <!-- Fin de las cards de información -->
 
-              <!-- Estadísticas -->
-              <div class="stats-container">
-                  <div class="stat-card total-antenas">
-                      <h5><i class="fas fa-signal"></i> Total de Antenas</h5>
-                      <p>{{ $totalAntenas }}</p>
-                  </div>
-                  <div class="stat-card funcionando">
-                      <h5><i class="fas fa-check-circle"></i> Funcionando</h5>
-                      <p>{{ $funcionando }}</p>
-                  </div>
-                  <div class="stat-card falla">
-                      <h5><i class="fas fa-exclamation-triangle"></i> Con Falla</h5>
-                      <p>{{ $falla }}</p>
-                  </div>
-                  <div class="stat-card panel-solar">
-                      <h5><i class="fas fa-solar-panel"></i> Panel Solar</h5>
-                      <p>{{ $panelSolar }}</p>
-                  </div>
-              </div>
-
-              <!-- Mapa -->
-              <div class="card shadow mb-4">
-                  <div class="card-body">
-                      <h5 class="card-title">Ubicación de Antenas</h5>
-                      <div id="map" class="map-container"></div>
-                  </div>
-              </div>
-          </div>
-      </div>
+        <!-- Mapa -->
+        <div class="card shadow mb-4">
+            <div class="card-body">
+                <h5 class="card-title">Ubicación de Antenas</h5>
+                <div id="map" class="map-container"></div>
+            </div>
+        </div>
+        <!-- Fin del mapa -->
+    </div>
   @endsection
 
 @push('scripts')
@@ -196,12 +170,12 @@
                   });
 
                   const popupContent = `
-                      <strong>Antena:</strong> ${antena.id_antena} <br>
-                      <strong>Localidad:</strong> ${antena.localidad?.localidad || ''} <br>
-                      <strong>Municipio:</strong> ${antena.municipio?.municipio || ''} <br>
-                      <strong>Dispositivo:</strong> ${antena.dispositivo?.modelo || ''} <br>
-                      <strong>Estado Energía:</strong> ${antena.estado_energia?.estado_energia || ''} <br>
-                      <strong>IP:</strong> ${antena.ip}
+                      <b>Antena:</b> ${antena.id_antena} <br>
+                      <b>Localidad:</b> ${antena.localidad?.localidad || ''} <br>
+                      <b>Municipio:</b> ${antena.municipio?.municipio || ''} <br>
+                      <b>Dispositivo:</b> ${antena.dispositivo?.modelo || ''} <br>
+                      <b>Estado Energía:</b> ${antena.estado_energia?.estado_energia || ''} <br>
+                      <b>IP:</b> ${antena.ip}
                   `;
 
                   L.marker([lat, lng], { icon: customIcon })
