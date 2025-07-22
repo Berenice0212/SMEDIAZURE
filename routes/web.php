@@ -8,6 +8,7 @@ use App\Http\Controllers\DispositivoController;
 use App\Http\Controllers\UbicacionAntenaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ReporteController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -33,6 +34,8 @@ Route::resource('dispositivos', DispositivoController::class);
 Route::resource('ubicacion_antenas', UbicacionAntenaController::class);
 
 Route::get('/usuarios', [UserController::class, 'index'])->name('usuarios.index');
+
+Route::resource('reportes', ReporteController::class);
 
 
 require __DIR__.'/auth.php';

@@ -21,6 +21,18 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('reportes.index') }}">
+            <i class="fe fe-clipboard fe-16"></i>
+            <span class="ml-1 item-text">Reportes</span>
+            </a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('ubicacion_antenas.index') }}">
+            <i class="fe fe-wifi fe-16"></i>
+            <span class="ml-1 item-text">Ubicacion Antenas</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('municipios.index') }}">
             <i class="fe fe-map-pin fe-16"></i>
             <span class="ml-1 item-text">Municipios</span>
@@ -32,6 +44,7 @@
             <span class="ml-1 item-text">Localidades</span>
             </a>
         </li>
+        <!--
         <li class="nav-item">
             <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('estado-energia.index') }}">
             <i class="fe fe-battery fe-16"></i>
@@ -44,12 +57,7 @@
             <span class="ml-1 item-text">Dispositivos</span>
             </a>
         </li>
-        <li class="nav-item">
-            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('ubicacion_antenas.index') }}">
-            <i class="fe fe-wifi fe-16"></i>
-            <span class="ml-1 item-text">Ubicacion Antenas</span>
-            </a>
-        </li>
+        -->
         <li class="nav-item">
             <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('usuarios.index') }}">
             <i class="fe fe-user fe-16"></i>

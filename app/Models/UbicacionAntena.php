@@ -32,4 +32,9 @@ class UbicacionAntena extends Model
     {
         return $this->belongsTo(Dispositivo::class, 'id_dispositivo');
     }
+
+    public function reportes()
+    {
+        return $this->hasMany(Reporte::class, 'id_antena', 'id_antena');
+    }
 }
