@@ -27,6 +27,12 @@
             </a>
         </li>
         <li class="nav-item">
+            <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('reporte-principal.index') }}">
+            <i class="fe fe-clipboard fe-16"></i>
+            <span class="ml-1 item-text">Nwe Reportes</span>
+            </a>
+        </li>
+        <li class="nav-item">
             <a class="nav-link pl-3 text-white sidebarHover" href="{{ route('ubicacion_antenas.index') }}">
             <i class="fe fe-wifi fe-16"></i>
             <span class="ml-1 item-text">Ubicacion Antenas</span>
