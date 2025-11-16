@@ -14,7 +14,11 @@
       <div class="col-12 col-md-8">
         <div class="card shadow">
           <div class="card-header">
-            <strong class="card-title">Registrar nuevo Municipio</strong>
+            <h3 class="card-title">Registrar nuevo Municipio</h3>
+            <div>
+                <a href="{{ route('municipios.index') }}"><span class="text-muted">Municipios</span></a>
+                <a href="#"><span class="text-muted">/Nuevo Municipio</span></a>
+            </div>
           </div>
           <div class="card-body">
             <form method="POST" action="{{ route('municipios.store') }}">

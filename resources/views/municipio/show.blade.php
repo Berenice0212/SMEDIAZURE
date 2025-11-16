@@ -2,9 +2,6 @@
 
 @push('styles')
   <style>
-    .navbar {
-        justify-content: end;
-    }
     .form-label-static {
         display: block;
         font-weight: 600;
@@ -25,7 +22,7 @@
 @endsection
 
 @section('sidebar')
-
+  @include('layouts.sidebar')
 @endsection
 
 @section('content')
@@ -33,7 +30,11 @@
     <div class="col-md-7">
         <div class="card shadow mb-4">
             <div class="card-body">
-                <h3 class="mb-4">Detalles del Municipio</h3>
+                <h3 class="mb-0">Detalles del Municipio</h3>
+                <div class="mb-4">
+                    <a href="{{ route('municipios.index') }}"><span class="text-muted">Municipios</span></a>
+                    <a href="#"><span class="text-muted">/Ver Municipio</span></a>
+                </div>
 
                 <!-- Nombre del Municipio -->
                 <div class="form-group mb-3">

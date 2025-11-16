@@ -1,11 +1,7 @@
 @extends('layouts.base')
 
 @push('styles')
-  <style>
-    .navbar {
-        justify-content: end;
-    }
-  </style>
+
 @endpush
 
 @section('navbar')
@@ -13,7 +9,7 @@
 @endsection
 
 @section('sidebar')
-
+  @include('layouts.sidebar')
 @endsection
 
 @section('content')
@@ -35,7 +31,11 @@
         <!-- Formulario -->
         <div class="card shadow mb-4">
             <div class="card-body">
-                <h3 class="mb-4">Editar Municipio</h3>
+                <h3 class="mb-0">Editar Municipio</h3>
+                <div class="mb-4">
+                    <a href="{{ route('municipios.index') }}"><span class="text-muted">Municipios</span></a>
+                    <a href="#"><span class="text-muted">/Editar Municipio</span></a>
+                </div>
 
                 <form action="{{ route('municipios.update', $municipio->id_municipio) }}" method="POST">
                     @csrf
